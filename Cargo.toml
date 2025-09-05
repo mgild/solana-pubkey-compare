@@ -1,3 +1,5 @@
+cargo-features = ["edition2024"]
+
 [package]
 name = "solana-pubkey-compare"
 version = "0.1.0"
@@ -13,6 +15,7 @@ doctest = false
 
 [dependencies]
 solana-program = "*"
+solana-address = "*"
 
 [dev-dependencies]
 solana-program-test = "*"
