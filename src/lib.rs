@@ -23,8 +23,8 @@ where
     #[cfg(target_os = "solana")]
     {
         unsafe {
-            let lhs_ptr = lhs.as_ref().as_ptr() as *const u64;
-            let rhs_ptr = rhs.as_ref().as_ptr() as *const u64;
+            let lhs_ptr = lhs as *const _ as *const u64;
+            let rhs_ptr = rhs as *const _ as *const u64;
             __solana_pubkey_compare__fast_eq(lhs_ptr, rhs_ptr)
         }
     }

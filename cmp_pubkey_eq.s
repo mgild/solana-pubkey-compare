@@ -26,12 +26,12 @@ __solana_pubkey_compare__fast_eq:
     jne r3, r4, not_equal
 
     // All equal - return true (1)
-    ldh r0, 1
+    lddw r0, 1
     exit
 
 not_equal:
     // Mismatch - return false (0)
-    ldh r0, 0
+    lddw r0, 0
     exit
 
 .size __solana_pubkey_compare__fast_eq, .-__solana_pubkey_compare__fast_eq
