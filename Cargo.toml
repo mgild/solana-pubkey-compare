@@ -2,7 +2,7 @@ cargo-features = ["edition2024"]
 
 [package]
 name = "solana-pubkey-compare"
-version = "0.0.0"
+version = "0.0.0-alpha0.0.0"
 edition = "2024"
 authors = ["mitch@switchboard.xyz"]
 license = "MIT"

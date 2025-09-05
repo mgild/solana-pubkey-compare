@@ -105,7 +105,7 @@ unsafe extern "C" {
 ///
 /// # Implementation Notes
 ///
-/// The assembly implementation (`cmp_pubkey_eq.s`) performs:
+/// The assembly implementation (`src/asm/cmp_pubkey_eq.s`) performs:
 /// 1. Four 64-bit memory loads (8 bytes each)
 /// 2. Four conditional comparisons with early exit
 /// 3. Single return instruction with cmp result
