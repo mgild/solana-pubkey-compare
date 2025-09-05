@@ -6,11 +6,11 @@ fn main() {
     // Only compile and link assembly for BPF targets
     if target.contains("sbf") || target.contains("solana") {
         cc::Build::new()
-            .file("cmp_pubkey_eq.s")
+            .file("asm/cmp_pubkey_eq.s")
             .flag("-target")
             .flag(&target)
             .compile("cmp_pubkey_eq");
     }
 
-    println!("cargo:rerun-if-changed=cmp_pubkey_eq.s");
+    println!("cargo:rerun-if-changed=asm/cmp_pubkey_eq.s");
 }

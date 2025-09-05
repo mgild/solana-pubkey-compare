@@ -7,6 +7,11 @@ edition = "2024"
 authors = ["mitch@switchboard.xyz"]
 license = "MIT"
 resolver = "2"
+description = "High-performance Solana public key comparison using optimized BPF assembly"
+keywords = ["solana", "blockchain", "pubkey", "bpf", "performance"]
+categories = ["cryptography", "no-std"]
+repository = "https://github.com/switchboard-xyz/solana-pubkey-compare"
+readme = "README.md"
 
 [lib]
 crate-type = ["cdylib", "lib"]
