@@ -3,7 +3,7 @@
 #![doc = include_str!("../README.md")]
 
 unsafe extern "C" {
-    fn __solana_pubkey_compare__fast_eq(lhs_ptr: *const u64, rhs_ptr: *const u64) -> bool;
+    fn __solana_pubkey_compare__fast_eq(lhs_ptr: *const u8, rhs_ptr: *const u8) -> bool;
 }
 
 /// High-performance Solana public key comparison library
@@ -108,7 +108,7 @@ unsafe extern "C" {
 /// The assembly implementation (`cmp_pubkey_eq.s`) performs:
 /// 1. Four 64-bit memory loads (8 bytes each)
 /// 2. Four conditional comparisons with early exit
-/// 3. Single return instruction with boolean result
+/// 3. Single return instruction with cmp result
 ///
 /// This eliminates the overhead of Rust's slice comparison and provides
 /// direct control over the BPF instruction sequence.
@@ -119,9 +119,9 @@ where
 {
     #[cfg(target_os = "solana")]
     unsafe {
-        let lhs_ptr = lhs as *const _ as *const u64;
-        let rhs_ptr = rhs as *const _ as *const u64;
-        __solana_pubkey_compare__fast_eq(lhs_ptr, rhs_ptr)
+        __solana_pubkey_compare__fast_eq(
+            lhs as *const _ as *const u8,
+            rhs as *const _ as *const u8)
     }
 
     #[cfg(not(target_os = "solana"))]
