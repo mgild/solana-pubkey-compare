@@ -8,30 +8,30 @@ __solana_pubkey_compare__cmp:
     // Load and compare first 8 bytes
     ldxdw r3, [r1+0]
     ldxdw r4, [r2+0]
-    jne r3, r4, fail
+    jne r3, r4, not_equal
 
     // Load and compare second 8 bytes
     ldxdw r3, [r1+8]
     ldxdw r4, [r2+8]
-    jne r3, r4, fail
+    jne r3, r4, not_equal
 
     // Load and compare third 8 bytes
     ldxdw r3, [r1+16]
     ldxdw r4, [r2+16]
-    jne r3, r4, fail
+    jne r3, r4, not_equal
 
     // Load and compare fourth 8 bytes
     ldxdw r3, [r1+24]
     ldxdw r4, [r2+24]
-    jne r3, r4, fail
+    jne r3, r4, not_equal
 
-    // All equal - success, return 0
-    lddw r0, 0
+    // All equal - return true (1)
+    lddw r0, 1
     exit
 
-fail:
-    // Mismatch - return 1
-    lddw r0, 1
+not_equal:
+    // Mismatch - return false (0)
+    lddw r0, 0
     exit
 
 .size __solana_pubkey_compare__cmp, .-__solana_pubkey_compare__cmp
