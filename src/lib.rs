@@ -1,5 +1,4 @@
 #![allow(unexpected_cfgs)]
-#![feature(asm_experimental_arch)]
 #![doc = include_str!("../README.md")]
 
 unsafe extern "C" {
