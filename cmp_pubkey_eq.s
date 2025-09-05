@@ -1,8 +1,8 @@
 .section .text
-.globl __solana_pubkey_compare__cmp
-.type __solana_pubkey_compare__cmp, @function
+.globl __solana_pubkey_compare__fast_eq
+.type __solana_pubkey_compare__fast_eq, @function
 
-__solana_pubkey_compare__cmp:
+__solana_pubkey_compare__fast_eq:
     // r1 = lhs_ptr, r2 = rhs_ptr
 
     // Load and compare first 8 bytes
@@ -26,12 +26,12 @@ __solana_pubkey_compare__cmp:
     jne r3, r4, not_equal
 
     // All equal - return true (1)
-    lddw r0, 1
+    ldh r0, 1
     exit
 
 not_equal:
     // Mismatch - return false (0)
-    lddw r0, 0
+    ldh r0, 0
     exit
 
-.size __solana_pubkey_compare__cmp, .-__solana_pubkey_compare__cmp
+.size __solana_pubkey_compare__fast_eq, .-__solana_pubkey_compare__fast_eq
